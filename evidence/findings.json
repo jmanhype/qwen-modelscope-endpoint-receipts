@@ -1,0 +1,6 @@
+{
+  "models_listing_is_public": true,
+  "chat_requires_valid_token": true,
+  "ai_host_accepts_real_token": true,
+  "cn_host_rejects_real_token": true
+}

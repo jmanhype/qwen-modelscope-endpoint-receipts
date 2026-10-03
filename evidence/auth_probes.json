@@ -1,0 +1,45 @@
+{
+  "model": "Qwen-Ambassador/Qwen3.8-Max",
+  "probes": [
+    {
+      "probe": "models_no_auth",
+      "url": "https://api-inference.modelscope.ai/v1/models",
+      "method": "GET",
+      "token": "none",
+      "http_status": 200,
+      "body_head": "{\"object\":\"list\",\"data\":[{\"id\":\"deepseek-ai/DeepSeek-V4-Pro\",\"object\":\"\",\"owned_by\":\"system\",\"created\":1782297885},{\"id\":\"deepseek-ai/DeepSeek-V4-Pro-0813\",\"object\":\"\",\"owned_by\":\"system\",\"created\":1787068378},{\"id\":\"deepseek-ai/DeepSeek-V4"
+    },
+    {
+      "probe": "models_bogus_token",
+      "url": "https://api-inference.modelscope.ai/v1/models",
+      "method": "GET",
+      "token": "bogus",
+      "http_status": 200,
+      "body_head": "{\"object\":\"list\",\"data\":[{\"id\":\"deepseek-ai/DeepSeek-V4-Pro\",\"object\":\"\",\"owned_by\":\"system\",\"created\":1782297885},{\"id\":\"deepseek-ai/DeepSeek-V4-Pro-0813\",\"object\":\"\",\"owned_by\":\"system\",\"created\":1787068378},{\"id\":\"deepseek-ai/DeepSeek-V4"
+    },
+    {
+      "probe": "chat_bogus_token",
+      "url": "https://api-inference.modelscope.ai/v1/chat/completions",
+      "method": "POST",
+      "token": "bogus",
+      "http_status": 401,
+      "body_head": "{\"error\":{\"message\":\"Authentication failed, please make sure that a valid ModelScope token is supplied.\",\"request_id\":\"a70e413e-d96e-49f6-a718-6cbb25a1191f\"}}"
+    },
+    {
+      "probe": "chat_real_token_ai",
+      "url": "https://api-inference.modelscope.ai/v1/chat/completions",
+      "method": "POST",
+      "token": "real",
+      "http_status": 200,
+      "body_head": "{\"id\":\"chatcmpl-45b0acea-e851-99e8-a0f1-ed07adbb3b3b\",\"object\":\"chat.completion\",\"created\":1791068987,\"model\":\"Qwen-Ambassador/Qwen3.8-Max\",\"system_fingerprint\":\"\",\"choices\":[{\"index\":0,\"delta\":{\"role\":null,\"content\":\"\",\"tool_calls\":null,\"f"
+    },
+    {
+      "probe": "chat_real_token_cn",
+      "url": "https://api-inference.modelscope.cn/v1/chat/completions",
+      "method": "POST",
+      "token": "real",
+      "http_status": 401,
+      "body_head": "{\"error\":{\"message\":\"Authentication failed, please make sure that a valid ModelScope token is supplied.\",\"request_id\":\"fc72d112-51b7-484c-baf9-032e89f719ae\"}}"
+    }
+  ]
+}
